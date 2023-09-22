@@ -1,3 +1,11 @@
+/**
+ * Type Predicate
+ * 반환 타입을 '변수 is Type' 으로 지정해줌.
+ * if 문을 통해서 또는 조건문을 통해서 타입 내로잉 과정에서
+ * 리턴 타입으로 명확히 타입에 대한 정보를 제공함으로써,
+ * 타입 내로잉이 더 디테일 하게 된다.
+ */
+
 const isNumber = (input: any): input is number => {
   return typeof input === "number";
 };
