@@ -31,3 +31,69 @@ interface IDolConstructor {
 function createIdol(constructor: IDolConstructor, name: string, age: number) {
   return new constructor(name, age);
 }
+
+class Parent {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  say(name: string) {
+    return `Hello ${name}`;
+  }
+}
+
+class Child extends Parent {
+  age?: number;
+  // 프로퍼티 오버라이드 또한 타입을 동일하게 해야한다.
+  name: string;
+  constructor(name: string, age: number) {
+    super(name);
+    this.name = name;
+    this.age = age;
+  }
+
+  /**
+   * 1. 부모 메서드와 반환 타입 일치, 필수 파라미터 존재
+   * 2. 부모 메서드에서 optional인 파라미터가 오버라이드 시 필수 파라미터가 되면 안된다.
+   * ->즉, 오버라이드 하는 대상 끼리의 시그니처가 동일해야 한다.
+   */
+  say(name: string) {
+    return "";
+  }
+}
+
+const parent = new Parent("geun");
+const child = new Child("ari", 12);
+let child2: Child;
+
+child2 = child;
+child2 = parent;
+
+// 공통된 멤버 변수, 메서드의 대해서 구조 클래스를 만들어놓을 수 있다. 당연히 인스턴스화는 불가능하다.
+abstract class Model {
+  name: string;
+  protected key: string;
+  constructor(name: string) {
+    this.name = name;
+    this.key = "aaa.bbb.ccc";
+  }
+
+  abstract shout(): string;
+}
+
+class ModelB extends Model {
+  private code: number = 0;
+
+  shout(): string {
+    return "Ya!";
+  }
+
+  getCode() {
+    return this.code;
+  }
+}
+
+const model = new ModelB("park");
+
+model.shout();

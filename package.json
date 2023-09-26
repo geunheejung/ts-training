@@ -1,0 +1,11 @@
+{
+  "name": "ts-training",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/geunheejung/ts-training.git",
+  "author": "geunheejung <geunhee0212@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
