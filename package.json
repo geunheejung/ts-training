@@ -4,8 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/geunheejung/ts-training.git",
   "author": "geunheejung <geunhee0212@gmail.com>",
+  "scripts": {
+    "start": "ts-node src/axiosStudy"
+  },
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.5.1",
     "jquery": "^3.7.1",
     "ts-node": "^10.9.1"
   },

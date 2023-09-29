@@ -42,3 +42,5 @@ $(tag).html(function (i: number) {
 });
 
 // 달러는 태그 이름 리터럴, 태그 이름 리터럴 배열, Jquery로 감싸진 HTML ELement를 받을 수 있음.
+
+const j = $(tag);
