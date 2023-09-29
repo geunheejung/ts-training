@@ -37,7 +37,8 @@ const tag = $("ul li").addClass(function (index) {
 
 $(tag).html(function (i: number) {
   console.log(this);
-  return $(this).data("name") + "입니다";
+  const res = ($(this).data("name") + "입니다") as JQuery.htmlString;
+  return res;
 });
 
 // 달러는 태그 이름 리터럴, 태그 이름 리터럴 배열, Jquery로 감싸진 HTML ELement를 받을 수 있음.
