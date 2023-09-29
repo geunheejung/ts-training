@@ -6,9 +6,11 @@
   "author": "geunheejung <geunhee0212@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "jquery": "^3.7.1",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.20",
     "reflect-metadata": "^0.1.13",
     "typescript": "4.9"
   }
