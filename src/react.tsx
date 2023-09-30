@@ -134,10 +134,6 @@ function useMemo1<T>(value: T, deps: any[]): T {
   return value;
 }
 
-useMemo;
-
-A.useRef;
-
 interface MutableRefObject<T> {
   current: T;
 }
@@ -145,31 +141,37 @@ interface RefObject<T> {
   readonly current: T | null;
 }
 
-interface YY {
-  // 초깃값 명확히 지정된 경우, current에 초깃값 할당 되고 변경 가능함. -> ref를 상태값으로 사용하려는 경우
-  useRef<T>(initialValue: T): MutableRefObject<{
-    current: T;
-  }>;
+function useRef1<T>(initialValue: T): MutableRefObject<T>;
+// 초깃값이 정해져있으나, null과 유니온 타입인 경우 -> readonly로 current가 지정됨. -> 엘리먼트에 ref 연결한 경우 ref가 초기화 되는 시점에 current의 초깃값이 명확히 지정되지 않음. -> 타입만 지정 가능함
+function useRef1<T>(initialValue: T | null): RefObject<T>;
 
-  // 초깃값이 정해져있으나, null과 유니온 타입인 경우 -> readonly로 current가 지정됨. -> 엘리먼트에 ref 연결한 경우 ref가 초기화 되는 시점에 current의 초깃값이 명확히 지정되지 않음. -> 타입만 지정 가능함
-  useRef<T>(initialValue: T | null): RefObject<{
-    readonly current: T | null;
-  }>;
+// 비어놓는 경우 -> 상태로 사용함.
+function useRef1<T = undefined>(initialValue?: T): MutableRefObject<T>;
 
-  // 비어놓는 경우 -> 상태로 사용함.
-  useRef<T = undefined>(): MutableRefObject<
-    | {
-        current: T;
-      }
-    | undefined
-  >;
+function useRef1<T>(initValue: any): any {}
+
+const case1 = useRef1("Hello");
+const case2 = useRef1<HTMLDivElement>(null);
+const case3 = useRef1();
+
+class Q4<S, P> {
+  setState<K extends keyof S>(
+    state:
+      | ((prevState: Readonly<S>, props: Readonly<P>) => Pick<S, K> | S | null)
+      | (Pick<S, K> | S | null),
+    callback?: () => void
+  ): void;
+
+  setState(state: any, callback: any) {}
 }
+// pick은 obj와 keyof 가능한 타입을 받고, keyof에 속한 값을 넣을 수 있게
+// 여기서 사용한 이유는 부분적으로 받으려고 한듯.
 
-const yy: YY = {
-  useRef<T>(
-    value: any
-  ):
-    | MutableRefObject<{ current: T } | undefined>
-    | RefObject<{ readonly current: T | null }> {},
+type j = { title: string; age: number };
+const v = new Q4<j, { user: {} }>();
+
+const e5: j = { title: "d", age: 2 };
+v.setState((ps, p) => {});
+const Modal = (): A.JSX.Element => {
+  return <div></div>;
 };
-type Ref1 = useRef<string>;
